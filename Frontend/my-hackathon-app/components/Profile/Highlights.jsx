@@ -1,24 +1,15 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-// import highlight1 from "../assets/highlight1.png";
-// import highlight2 from "../assets/highlight2.png";
-// import highlight3 from "../assets/highlight3.png";
-// import highlight4 from "../assets/highlight4.png";
-// import highlight5 from "../assets/highlight5.png";
+import { Box, Image, Text } from "@chakra-ui/react";
 
 let highlightsArray = [
-  { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTKlAii5CEYgd3bxCdCE2uwHQo8KeCIAmGZNRNJxKuYQ&s", label: "WEB-DEV" },
-  { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTKlAii5CEYgd3bxCdCE2uwHQo8KeCIAmGZNRNJxKuYQ&s", label: "FUN QNAs" },
-  { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTKlAii5CEYgd3bxCdCE2uwHQo8KeCIAmGZNRNJxKuYQ&s", label: "OUR JOURNEY" },
-  { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTKlAii5CEYgd3bxCdCE2uwHQo8KeCIAmGZNRNJxKuYQ&s", label: "HELPFUL QNAs" },
-  { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTKlAii5CEYgd3bxCdCE2uwHQo8KeCIAmGZNRNJxKuYQ&s", label: "CSS/JS EFFECTS" },
+  { src: "https://storage.needpix.com/rsynced_images/head-659652_1280.png", label: "WEB-DEV" },
+  { src: "https://www.kindpng.com/picc/m/72-723761_student-png-sammilani-mahavidyalaya-undergraduate-and-dummy-user.png", label: "React-DEV" },
+  { src: "https://storage.needpix.com/rsynced_images/head-659652_1280.png", label: "JAVA-DEV" },
+  { src: "https://www.kindpng.com/picc/m/72-723761_student-png-sammilani-mahavidyalaya-undergraduate-and-dummy-user.png", label: "Next.Js-DEV" },
+  { src: "https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-collection-image-icon-stock-isolated-object-set-symbol-web-137160339.jpg", label: "CSS-DEV" },
 ];
-
-const Wrapper = styled.div`
-  display: flex;
-  padding: 0 20px;
-`;
 
 const HighLightWrapper = styled.div`
   display: flex;
@@ -29,29 +20,17 @@ const HighLightWrapper = styled.div`
   }
 `;
 
-const HighLightImage = styled.img`
-  max-width: 75px;
-  border-radius: 50%;
-  border: 1px solid #919191;
-  padding: 4px;
-`;
-
-const HighLightLabel = styled.span`
-  font-size: 12px;
-  white-space: nowrap;
-  margin-top: 6px;
-`;
 
 function Highlights() {
   return (
-    <Wrapper>
+    <Box display="flex" padding="0 20px">
       {highlightsArray.map((highlight) => (
         <HighLightWrapper>
-          <HighLightImage src={highlight.src} />
-          <HighLightLabel>{highlight.label}</HighLightLabel>
+          <Image maxW="75px" borderRadius="50%" border="1px solid #919191" padding="4px" src={highlight.src} />
+          <Text fontSize="12px" whiteSpace="nowrap" marginTop="6px" >{highlight.label}</Text>
         </HighLightWrapper>
       ))}
-    </Wrapper>
+    </Box>
   );
 }
 
