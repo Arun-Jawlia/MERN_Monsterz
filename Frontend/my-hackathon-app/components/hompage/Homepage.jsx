@@ -9,7 +9,6 @@ import {
   Button,
   Image,
   Text,
-  Stack,
   Heading,
   CardBody,
   Card,
@@ -19,19 +18,37 @@ import {
   CardHeader,
   Avatar,
   IconButton,
+  Input,
+  useDisclosure,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
 } from "@chakra-ui/react";
 
-import {BsThreeDotsVertical} from "@chakra-ui/icons";
-import { BiLike } from  "@chakra-ui/icons";
-import { BiShare}  from  "@chakra-ui/icons";
-import { BiChat } from  "@chakra-ui/icons";
+import { Icon } from "@chakra-ui/react";
+
+import { messageIcon } from "./messageIcon";
+
+import Styles from "../../styles/Homepage.module.css";
+
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { BiLike } from "@chakra-ui/icons";
+import { BiShare } from "@chakra-ui/icons";
+import { BiChat } from "@chakra-ui/icons";
 
 // import Navbar from "../navbar/Navbar";
-import { logo } from "../../public/hulk.jpg";
-import { BiHomeAlt } from "react-icons/bi";
-import { AiOutlineHeart } from "react-icons/ai";
+import { BiHomeAlt, BiMessageAlt } from "react-icons/bi";
+import { FiShare } from "react-icons/fi";
+import { AiOutlineLike, AiOutlinePoweroff } from "react-icons/ai";
 
 const Homepage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
+
   return (
     <>
       <Container
@@ -44,21 +61,28 @@ const Homepage = () => {
         // ]}
       >
         <Grid m="auto" templateColumns="20% 55% 20%" gap="2.5%">
-          <Box bgColor="white" boxShadow="lg" h="100vh" p="2">
+          <Box
+            borderRightColor='gray.50'
+            bgColor="white"
+            // boxShadow="lg"
+            borderRight='1px solid lightgray'
+            h="100vh"
+            p="2"
+          >
             <Box h="200px">
               <Center>
                 <Image
-                  boxSize="300px"
-                  src="https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-instagram-icon-instagram-logo-website-icon-app-icon-22.png"
+                  boxSize="150px"
+                  src="https://www.freepnglogos.com/uploads/logo-ig-png/logo-ig-instagram-icon-instagram-logo-instagram-text-icon-18.png"
                   alt="logo"
                 />
               </Center>
             </Box>
 
-            <Box boxShadow="2xl" p="5" m="auto">
+            <Box p="5" m="auto" >
               <Box>
                 <Center>
-                  <Button m="auto" colorScheme="blackAlpha" w="80%" size="lg">
+                  <Button m="auto" variant = 'outline'  w="80%" size="lg">
                     <BiHomeAlt />
                     Home
                   </Button>
@@ -67,8 +91,24 @@ const Homepage = () => {
               <br />
               <Box>
                 <Center>
-                  <Button m="auto" colorScheme="blackAlpha" w="80%" size="lg">
+                  <Button m="auto"  variant = 'outline'  w="80%" size="lg">
                     Profile
+                  </Button>
+                </Center>
+              </Box>
+              <br />
+              <Box>
+                <Center>
+                  <Button m="auto"  variant = 'outline'  w="80%" size="lg">
+                    Create Post
+                  </Button>
+                </Center>
+              </Box>
+              <br />
+              <Box>
+                <Center>
+                  <Button m="auto"  variant = 'outline'  w="80%" size="lg">
+                   <AiOutlinePoweroff/> Logout
                   </Button>
                 </Center>
               </Box>
@@ -78,80 +118,431 @@ const Homepage = () => {
           {/* mid container */}
 
           <Box
+            className={Styles.scrollbar}
+            // bgColor="transparent"
             overflow="scroll"
             overflowX="hidden"
-            // bgColor="transparent"
             h="100vh"
           >
+            {/* Top Section */}
             <Box
-              boxShadow="2xl"
-              w="80%"
+              // boxShadow="sm"
+              // border="1px solid black"
+              w="60%"
               borderRadius="10px"
-              h="200px"
+              h="100px"
               m="auto"
               pt="4"
-            ></Box>
+              boxShadow='xs'
+            >
+             < Input type='file'/>
 
-            <Box w="fit-content" h="400px" m="auto" mt="5">
-              <Card maxW="sm">
-                <CardHeader>
-                  <Flex spacing="4">
-                    <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                      <Avatar
-                        name="Segun Adebayo"
-                        src="https://bit.ly/sage-adebayo"
-                      />
-
-                      <Box>
-                        <Heading size="sm">Segun Adebayo</Heading>
-                        <Text>Creator, Chakra UI</Text>
-                      </Box>
-                    </Flex>
-                    <IconButton
-                      variant="ghost"
-                      colorScheme="gray"
-                      aria-label="See menu"
-                    
-                    />
-                  </Flex>
-                </CardHeader>
-                <CardBody>
-                  <Text>
-                    With Chakra UI, I wanted to sync the speed of development
-                    with the speed of design. I wanted the developer to be just
-                    as excited as the designer to create a screen.
-                  </Text>
-                </CardBody>
-                <Image
-                  objectFit="cover"
-                  src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                  alt="Chakra UI"
-                />
-
-                <CardFooter
-                  justify="space-between"
-                  flexWrap="wrap"
-                  sx={{
-                    "& > button": {
-                      minW: "136px",
-                    },
-                  }}
-                >
-                  <Button flex="1" variant="ghost" >
-                    Like
-                  </Button>
-                  <Button flex="1" variant="ghost" >
-                    Comment
-                  </Button>
-                  <Button flex="1" variant="ghost" >
-                    Share
-                  </Button>
-                </CardFooter>
-              </Card>
             </Box>
+
+            {/* Scroll section */}
+
+            <SimpleGrid columns={1}>
+              <Box w="fit-content" h="fit-content" m="auto" boxShadow='lg' mt="5">
+                <Card maxW="sm">
+                  <CardHeader>
+                    <Flex spacing="4">
+                      <Flex
+                        flex="1"
+                        gap="4"
+                        alignItems="center"
+                        flexWrap="wrap"
+                      >
+                        <Avatar
+                          name="Segun Adebayo"
+                          src="https://bit.ly/sage-adebayo"
+                        />
+
+                        <Box>
+                          <Heading size="sm">Segun Adebayo</Heading>
+                          <Text>Creator, Chakra UI</Text>
+                        </Box>
+                      </Flex>
+                      <IconButton
+                        variant="ghost"
+                        colorScheme="gray"
+                        aria-label="See menu"
+                      >
+                        <Icon as={BsThreeDotsVertical} />
+                      </IconButton>
+                    </Flex>
+                  </CardHeader>
+                  <CardBody>
+                    <Text>
+                      With Chakra UI, I wanted to sync the speed of development
+                      with the speed of design. I wanted the developer to be
+                      just as excited as the designer to create a screen.
+                    </Text>
+                  </CardBody>
+                  <Image
+                    objectFit="cover"
+                    src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    alt="Chakra UI"
+                  />
+
+                  <CardFooter
+                    justify="space-between"
+                    flexWrap="wrap"
+                    sx={{
+                      "& > button": {
+                        minW: "136px",
+                      },
+                    }}
+                  >
+                    <Button flex="1" variant="ghost">
+                      <AiOutlineLike /> Like
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <BiMessageAlt /> Comment
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <FiShare /> Share
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Box>
+              <Box w="fit-content" h="fit-content" boxShadow='lg' m="auto" mt="5">
+                <Card maxW="sm">
+                  <CardHeader>
+                    <Flex spacing="4">
+                      <Flex
+                        flex="1"
+                        gap="4"
+                        alignItems="center"
+                        flexWrap="wrap"
+                      >
+                        <Avatar
+                          name="Segun Adebayo"
+                          src="https://bit.ly/sage-adebayo"
+                        />
+
+                        <Box>
+                          <Heading size="sm">Segun Adebayo</Heading>
+                          <Text>Creator, Chakra UI</Text>
+                        </Box>
+                      </Flex>
+                      <IconButton
+                        variant="ghost"
+                        colorScheme="gray"
+                        aria-label="See menu"
+                      >
+                        <Icon as={BsThreeDotsVertical} />
+                      </IconButton>
+                    </Flex>
+                  </CardHeader>
+                  <CardBody>
+                    <Text>
+                      With Chakra UI, I wanted to sync the speed of development
+                      with the speed of design. I wanted the developer to be
+                      just as excited as the designer to create a screen.
+                    </Text>
+                  </CardBody>
+                  <Image
+                    objectFit="cover"
+                    src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    alt="Chakra UI"
+                  />
+
+                  <CardFooter
+                    justify="space-between"
+                    flexWrap="wrap"
+                    sx={{
+                      "& > button": {
+                        minW: "136px",
+                      },
+                    }}
+                  >
+                    <Button flex="1" variant="ghost">
+                      <AiOutlineLike /> Like
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <BiMessageAlt /> Comment
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <FiShare /> Share
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Box>
+              <Box w="fit-content" boxShadow='lg' h="fit-content" m="auto" mt="5">
+                <Card maxW="sm">
+                  <CardHeader>
+                    <Flex spacing="4">
+                      <Flex
+                        flex="1"
+                        gap="4"
+                        alignItems="center"
+                        flexWrap="wrap"
+                      >
+                        <Avatar
+                          name="Segun Adebayo"
+                          src="https://bit.ly/sage-adebayo"
+                        />
+
+                        <Box>
+                          <Heading size="sm">Segun Adebayo</Heading>
+                          <Text>Creator, Chakra UI</Text>
+                        </Box>
+                      </Flex>
+                      <IconButton
+                        variant="ghost"
+                        colorScheme="gray"
+                        aria-label="See menu"
+                      >
+                        <Icon as={BsThreeDotsVertical} />
+                      </IconButton>
+                    </Flex>
+                  </CardHeader>
+                  <CardBody>
+                    <Text>
+                      With Chakra UI, I wanted to sync the speed of development
+                      with the speed of design. I wanted the developer to be
+                      just as excited as the designer to create a screen.
+                    </Text>
+                  </CardBody>
+                  <Image
+                    objectFit="cover"
+                    cursor='pointer'
+                    src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    alt="Chakra UI"
+                  />
+
+                  <CardFooter
+                    justify="space-between"
+                    flexWrap="wrap"
+                    sx={{
+                      "& > button": {
+                        minW: "136px",
+                      },
+                    }}
+                  >
+                    <Button flex="1" variant="ghost">
+                      <AiOutlineLike /> Like
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <BiMessageAlt /> Comment
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <FiShare /> Share
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Box>
+              <Box w="fit-content" boxShadow='2xl' h="fit-content" m="auto" mt="5">
+                <Card maxW="sm">
+                  <CardHeader>
+                    <Flex spacing="4">
+                      <Flex
+                        flex="1"
+                        gap="4"
+                        alignItems="center"
+                        flexWrap="wrap"
+                      >
+                        <Avatar
+                          name="Segun Adebayo"
+                          src="https://bit.ly/sage-adebayo"
+                        />
+
+                        <Box>
+                          <Heading size="sm">Segun Adebayo</Heading>
+                          <Text>Creator, Chakra UI</Text>
+                        </Box>
+                      </Flex>
+                      <IconButton
+                        variant="ghost"
+                        colorScheme="gray"
+                        aria-label="See menu"
+                      >
+                        <Icon as={BsThreeDotsVertical} />
+                      </IconButton>
+                    </Flex>
+                  </CardHeader>
+                  <CardBody>
+                    <Text>
+                      With Chakra UI, I wanted to sync the speed of development
+                      with the speed of design. I wanted the developer to be
+                      just as excited as the designer to create a screen.
+                    </Text>
+                  </CardBody>
+                  <Image
+                    objectFit="cover"
+                    src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    alt="Chakra UI"
+                  />
+
+                  <CardFooter
+                    justify="space-between"
+                    flexWrap="wrap"
+                    sx={{
+                      "& > button": {
+                        minW: "136px",
+                      },
+                    }}
+                  >
+                    <Button flex="1" variant="ghost">
+                      <AiOutlineLike /> Like
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <BiMessageAlt /> Comment
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <FiShare /> Share
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Box>
+              <Box w="fit-content" h="fit-content" m="auto" mt="5">
+                <Card maxW="sm">
+                  <CardHeader>
+                    <Flex spacing="4">
+                      <Flex
+                        flex="1"
+                        gap="4"
+                        alignItems="center"
+                        flexWrap="wrap"
+                      >
+                        <Avatar
+                          name="Segun Adebayo"
+                          src="https://bit.ly/sage-adebayo"
+                        />
+
+                        <Box>
+                          <Heading size="sm">Segun Adebayo</Heading>
+                          <Text>Creator, Chakra UI</Text>
+                        </Box>
+                      </Flex>
+                      <IconButton
+                        variant="ghost"
+                        colorScheme="gray"
+                        aria-label="See menu"
+                      >
+                        <Icon as={BsThreeDotsVertical} />
+                      </IconButton>
+                    </Flex>
+                  </CardHeader>
+                  <CardBody>
+                    <Text>
+                      With Chakra UI, I wanted to sync the speed of development
+                      with the speed of design. I wanted the developer to be
+                      just as excited as the designer to create a screen.
+                    </Text>
+                  </CardBody>
+                  <Image
+                    objectFit="cover"
+                    src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    alt="Chakra UI"
+                  />
+
+                  <CardFooter
+                    justify="space-between"
+                    flexWrap="wrap"
+                    sx={{
+                      "& > button": {
+                        minW: "136px",
+                      },
+                    }}
+                  >
+                    <Button flex="1" variant="ghost">
+                      <AiOutlineLike /> Like
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <BiMessageAlt /> Comment
+                    </Button>
+                    <Button flex="1" variant="ghost">
+                      <FiShare /> Share
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Box>
+            </SimpleGrid>
           </Box>
 
-          <Box bgColor="gray.50" h="100vh"></Box>
+          {/* Right Container */}
+
+          <Box  h="100vh">
+           <Box w='80%' m='auto'>
+           <Flex justifyContent='space-around' alignItems='center'>
+              {/* <Flex> */}
+              <Avatar size='sm' src="https://bit.ly/broken-link" />
+
+              <Box p={2}>
+                <Button ref={btnRef} colorScheme="teal" size='sm' onClick={onOpen}>
+                 <BiMessageAlt/>
+                </Button>
+                <Drawer
+                  isOpen={isOpen}
+                  placement="right"
+                  onClose={onClose}
+                  finalFocusRef={btnRef}
+                  size='sm'
+                >
+                  <DrawerOverlay />
+                  <DrawerContent>
+                    <DrawerCloseButton />
+                    <DrawerHeader>Chat with customer care</DrawerHeader>
+
+                    <DrawerBody>
+                      <Input placeholder="Type here..." />
+                    </DrawerBody>
+
+                    <DrawerFooter>
+                      
+                      <Button colorScheme="blue">Save</Button>
+                    </DrawerFooter>
+                  </DrawerContent>
+                </Drawer>
+              </Box>
+              {/* </Flex> */}
+            </Flex>
+           </Box>
+
+           <Box  mt={10} boxShadow='lg'  borderRadius='10px'>
+           <Box w='80%' m='auto' p='1'  bgColor='gray.50' boxShadow='sm' >
+              <Text fontWeight='600' textAlign='center' fontSize='lg' >Suggested for you </Text>
+              
+            </Box>
+            <Box  w='80%' m='auto' mt='1rem' p='1' >
+              <Flex justifyContent='space-between' alignItems='center'  >
+              <Text fontSize='lg' >User Name </Text>
+             <Button size='sm'> <Text>+Follow</Text></Button>
+              </Flex>
+              
+            </Box>
+            <Box w='80%' m='auto' p='1' >
+              <Flex justifyContent='space-between' alignItems='center'  >
+              <Text fontSize='lg' >User Name </Text>
+             <Button size='sm'> <Text>+Follow</Text></Button>
+              </Flex>
+              
+            </Box>
+            <Box w='80%' m='auto' p='1' >
+              <Flex justifyContent='space-between' alignItems='center'  >
+              <Text fontSize='lg' >User Name </Text>
+             <Button size='sm'> <Text>+Follow</Text></Button>
+              </Flex>
+              
+            </Box>
+            <Box w='80%' m='auto' p='1' >
+              <Flex justifyContent='space-between' alignItems='center'  >
+              <Text fontSize='lg' >User Name </Text>
+             <Button size='sm'> <Text>+Follow</Text></Button>
+              </Flex>
+              
+            </Box>
+            <Box w='80%' m='auto' p='1' >
+              <Flex justifyContent='space-between' alignItems='center'  >
+              <Text fontSize='lg' >User Name </Text>
+             <Button size='sm'> <Text>+Follow</Text></Button>
+              </Flex>
+              
+            </Box>
+         
+           </Box>
+          </Box>
         </Grid>
       </Container>
     </>

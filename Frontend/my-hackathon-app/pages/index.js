@@ -22,7 +22,7 @@ export default function Home() {
       <main>
         <Homepage />
         {/* <Navbar /> */}
-        <SignUp/>
+        {/* <SignUp/> */}
         {/* <Login/> */}
       </main>
     </>
