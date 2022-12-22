@@ -19,6 +19,11 @@ const Navbar = () => {
 
 
         </Box>
+    <Box>
+        <Button >
+            Submit
+        </Button>
+    </Box>
   )
 }
 

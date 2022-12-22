@@ -5,6 +5,8 @@ import Head from "next/head";
 // import Navbar from "../components/navbar/Navbar";
 import Homepage from "../components/hompage/Homepage";
 import Navbar from "../components/navbar/Navbar";
+import SignUp from "../Components/Signup/SignUp";
+import Login from "../Components/Login/Login";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +21,9 @@ export default function Home() {
       </Head>
       <main>
         <Homepage />
+        {/* <Navbar /> */}
+        <SignUp/>
+        {/* <Login/> */}
       </main>
     </>
   );
