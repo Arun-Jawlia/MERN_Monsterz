@@ -4,7 +4,7 @@ import {Box,Button} from '@chakra-ui/react'
 const Navbar = () => {
   return (
     <Box>
-        <Button>
+        <Button >
             Submit
         </Button>
     </Box>

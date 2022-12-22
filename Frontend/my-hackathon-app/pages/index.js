@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/navbar/Navbar";
+import SignUp from "../Components/Signup/SignUp";
+import Login from "../Components/Login/Login";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Navbar />
+        {/* <Navbar /> */}
+        <SignUp/>
+        {/* <Login/> */}
       </main>
     </>
   );
