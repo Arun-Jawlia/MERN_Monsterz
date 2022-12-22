@@ -4,6 +4,8 @@ const { validator } = require("./middlewares/validator.middleware");
 const { userRoutes } = require("./Routes/User.routes");
 require("dotenv").config();
 const cors = require("cors");
+const { authentication } = require("./middlewares/auth.middleware");
+
 
 
 
@@ -26,6 +28,11 @@ app.use(validator);
 app.use("/", userRoutes);
 
 
+app.use(authentication)
+app.use("/user",require("./Routes/Profilepic.routes"))
+app.use("/user", require("./Routes/PostImage.routes"))
+
+
 
 
 app.listen(process.env.port, async() => {
@@ -37,7 +44,8 @@ app.listen(process.env.port, async() => {
     catch (err) {
         console.log("Connection to DB Failed");
         console.log(err);
-        res.send({"Message":"Connection to Network Failed"});
     }
+
+    console.log(`running on port ${process.env.port}`)
 });
 

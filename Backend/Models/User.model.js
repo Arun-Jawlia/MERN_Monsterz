@@ -7,10 +7,7 @@ const userSchema = mongoose.Schema({
     number:String,
     username:String,
     about:String,
-    profilePic:{
-        data: Buffer,
-        contentType: String
-    }
+    profile_url:String,
 }, {
     versionKey:false
 })

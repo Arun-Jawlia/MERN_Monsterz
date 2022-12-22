@@ -83,7 +83,7 @@ userRoutes.post("/login", async(req,res) => {
             console.log(myPassword);
             bcrypt.compare(password, myPassword, (err,result) => {
                 if(result){
-                    const token = jwt.sign({message:"Hey"}, process.env.secret_key, {expiresIn:"1d"})
+                    const token = jwt.sign({"username":byEmail[0].username,"user_id":byEmail[0]._id}, process.env.secret_key, {expiresIn:"1d"})
                     res.send({token, byEmail, "Message":"Logged-In Successfully"});
                 }
                 else{
@@ -98,7 +98,7 @@ userRoutes.post("/login", async(req,res) => {
             console.log(myPassword);
             bcrypt.compare(password, myPassword, (err,result) => {
                 if(result){
-                    const token = jwt.sign({message:"Hey"}, process.env.secret_key, {expiresIn:"1d"})
+                    const token = jwt.sign({"username":byUsername[0].username,"user_id":byUsername[0]._id}, process.env.secret_key, {expiresIn:"1d"})
                     res.send({token, byUsername, "Message":"Logged-In Successfully"});
                 }
                 else{
@@ -113,7 +113,7 @@ userRoutes.post("/login", async(req,res) => {
             console.log(myPassword);
             bcrypt.compare(password, myPassword, (err,result) => {
                 if(result){
-                    const token = jwt.sign({message:"Hey"}, process.env.secret_key, {expiresIn:"1d"})
+                    const token = jwt.sign({"username":byUsernumber[0].username,"user_id":byUsernumber[0]._id}, process.env.secret_key, {expiresIn:"1d"})
                     res.send({token, byUsernumber, "Message":"Logged-In Successfully"});
                 }
                 else{
@@ -134,28 +134,4 @@ userRoutes.post("/login", async(req,res) => {
     }
 })
 
-
-userRoutes.patch("/updateprofile/:username", async(req,res) => {
-    try {
-        const username = req.params.username;
-        const payload = req.body;
-        const byUsername = await UserModel.find({username});
-        
-        if(byUsername.length>0){
-            const userID = byUsername[0]._id
-            const updateData = await UserModel.findByIdAndUpdate(userID,payload);
-           res.send({"Message":"Profile Details updated Successfully",updateData})
-        }
-        else{
-            res.send({"Message":" Profile Details updation failed"})
-        }
-    } 
-    
-    catch (err) {
-        console.log(err)
-        res.send({"Message":"Error while updating Data"})
-    }
-})
-
-
-module.exports = { userRoutes };
+module.exports = { userRoutes }
