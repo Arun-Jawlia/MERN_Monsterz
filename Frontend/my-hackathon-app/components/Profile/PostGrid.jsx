@@ -26,12 +26,13 @@ export const postImages = [
 const GridWrapper = styled.div`
   margin-top: 3px;
   display: grid;
-  grid-gap: 3%;
+  grid-gap: 2%;
   grid-template-columns: repeat(3, 1fr);
   img {
     max-width: 100%;
   }
   align-items: center;
+  padding: 2%;
 `;
 
 function PostGrid() {

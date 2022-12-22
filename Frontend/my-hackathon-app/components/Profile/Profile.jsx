@@ -9,6 +9,7 @@ import ProfileButtons from "./ProfileButtons";
 // import Highlights from "./Highlights";
 import Tabs from "./Tabs";
 import PostGrid from "./PostGrid";
+import Highlights from "./Highlights";
 
 
 // background-color: #000;
@@ -18,7 +19,7 @@ const ProfileWrapper = styled.div`
   height: 100vh;
   margin: 0 auto;
   overflow-x: hidden;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -32,7 +33,7 @@ function Profile() {
       <ProfileDetails />
       <About />
       <ProfileButtons />
-      {/* <Highlights /> */}
+      <Highlights />
       <Tabs />
       <PostGrid />
     </ProfileWrapper>
