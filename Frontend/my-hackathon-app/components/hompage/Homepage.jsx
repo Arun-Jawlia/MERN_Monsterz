@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   SimpleGrid,
@@ -37,13 +37,17 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { BiHomeAlt, BiMessageAlt } from "react-icons/bi";
 import { FiShare } from "react-icons/fi";
 import { AiOutlineLike, AiOutlinePoweroff } from "react-icons/ai";
-import { getStaticProps } from "./getData";
 
-const Homepage = () => {
+const Homepage = async() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  console.log(getStaticProps.data)
+
+
+  const res = await fetch(
+    'https://cobalt-blue-bison-hem.cyclic.app/user');
+let allAlbums = await res.json();
+console.log(allAlbums);
 
   return (
     <>
