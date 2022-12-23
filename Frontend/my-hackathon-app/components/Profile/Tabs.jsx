@@ -15,6 +15,7 @@ const TabsWrapper = styled.div`
 const Tab = styled.div`
   padding: 3% 8% 3% ;
   width: 100%;
+  cursor: pointer;
   border-bottom: ${(props) =>
     props.isActive ? "2px solid white" : "1px solid #111"};
   svg {
