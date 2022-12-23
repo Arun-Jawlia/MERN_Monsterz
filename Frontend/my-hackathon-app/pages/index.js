@@ -22,12 +22,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+<<<<<<< HEAD
+        <SignUp/>
+        <Login/>
+        <Homepage />
+=======
         {/* <Homepage /> */}
         {/* <Navbar /> */}
         {/* <SignUp/> */}
         {/* <Login/> */}
         <Profile/>
         {/* <getData/> */}
+>>>>>>> c4d2226b3ea49af23eaf555e5977bf7da4edd54e
       </main>
     </>
   );
