@@ -30,24 +30,20 @@ import {
 } from "@chakra-ui/react";
 
 import { Icon } from "@chakra-ui/react";
-
-import { messageIcon } from "./messageIcon";
-
 import Styles from "../../styles/Homepage.module.css";
-
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { BiLike } from "@chakra-ui/icons";
-import { BiShare } from "@chakra-ui/icons";
-import { BiChat } from "@chakra-ui/icons";
 
 // import Navbar from "../navbar/Navbar";
 import { BiHomeAlt, BiMessageAlt } from "react-icons/bi";
 import { FiShare } from "react-icons/fi";
 import { AiOutlineLike, AiOutlinePoweroff } from "react-icons/ai";
+import { getStaticProps } from "./getData";
 
 const Homepage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+
+  console.log(getStaticProps.data)
 
   return (
     <>
