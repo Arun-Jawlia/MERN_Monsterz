@@ -13,7 +13,11 @@
 ## Backend Part (with MVC structure)
 
 
+![Screenshot_20221223_032638](https://user-images.githubusercontent.com/101381281/209315490-b180124b-a537-4019-aa1c-63cd7b387d08.png)
 
 ## Socket.io (For Group Chats)
+
+![Screenshot_20221223_032422](https://user-images.githubusercontent.com/101381281/209315483-d6346030-cd20-481e-a13e-35e8d5d5e2f3.png)
+
 
 
