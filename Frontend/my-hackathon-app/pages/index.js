@@ -8,6 +8,7 @@ import Navbar from "../components/navbar/Navbar";
 import SignUp from "../Components/Signup/SignUp";
 import Login from "../Components/Login/Login";
 import Profile from "../Components/Profile/Profile";
+import getData from "../components/hompage/getData";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {/* <Homepage /> */}
+        <Homepage />
         {/* <Navbar /> */}
         {/* <SignUp/> */}
         {/* <Login/> */}
-        <Profile/>
+        {/* <Profile/> */}
+        {/* <getData/> */}
       </main>
     </>
   );
