@@ -25,7 +25,7 @@ io.on("connection", async (socket) => {
   //console.log("What is sokect.: ", socket);
   console.log("socket/user connected :26");
   let payload = await messageModel.find();
-  io.emit("chat", payload);
+  io.emit("chat", {"data": payload});
   // console.log("msgs: 28", msgs);
 
   socket.on("disconnect", () => {
@@ -36,7 +36,7 @@ io.on("connection", async (socket) => {
     let newMessage = new messageModel(payload);
     await newMessage.save();
 
-    io.emit("chat", payload);
+    io.emit("chat",{"data": payload});
   });
 });
 
