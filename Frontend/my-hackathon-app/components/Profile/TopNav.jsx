@@ -1,9 +1,10 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { BiChevronDown } from "react-icons/bi";
 import { FiPlusSquare } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
+import axios from "axios";
 
 const TopNavWrapper = styled.div`
   display: flex;
@@ -76,7 +77,7 @@ function TopNav() {
 
   const getData = () => {
     axios
-      .get("https://cobalt-blue-bison-hem.cyclic.app/user", { headers })
+      .get("https://cobalt-blue-bison-hem.cyclic.app/user/profile/:user_id", { headers })
 
       // .then(res=>res.json())
       .then((res) => {
@@ -96,7 +97,7 @@ function TopNav() {
     console.log(data)
   }
 
-  
+
   return (
     <TopNavWrapper>
       <AccountNav>

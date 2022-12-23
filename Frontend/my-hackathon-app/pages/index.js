@@ -22,11 +22,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Homepage />
+        {/* <Homepage /> */}
         {/* <Navbar /> */}
-        <SignUp/>
-        <Login/>
-        {/* <Profile/> */}
+        {/* <SignUp/> */}
+        {/* <Login/> */}
+        <Profile/>
         {/* <getData/> */}
       </main>
     </>

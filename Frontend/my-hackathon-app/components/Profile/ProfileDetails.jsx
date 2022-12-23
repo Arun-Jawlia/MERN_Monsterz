@@ -1,8 +1,9 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { Box, Text } from "@chakra-ui/react";
 import { postImages } from "./PostGrid";
+import axios from "axios";
 
 const ProfileDetailsWrapper = styled.div`
   display: flex;
@@ -50,7 +51,7 @@ function ProfileDetails() {
 
   const getData = () => {
     axios
-      .get("https://cobalt-blue-bison-hem.cyclic.app/user", { headers })
+      .get("https://cobalt-blue-bison-hem.cyclic.app/user/profile/:user_id", { headers })
 
       // .then(res=>res.json())
       .then((res) => {
