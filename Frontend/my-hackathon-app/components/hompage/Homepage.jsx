@@ -12,9 +12,7 @@ import {
   Heading,
   CardBody,
   Card,
-  Divider,
   CardFooter,
-  ButtonGroup,
   CardHeader,
   Avatar,
   IconButton,
@@ -27,6 +25,7 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
+  useToast,
 } from "@chakra-ui/react";
 
 import { Icon } from "@chakra-ui/react";
@@ -43,6 +42,7 @@ const Homepage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const [data, setData] = useState([]);
+  const toast = useToast();
 
   let token;
   if (typeof window !== "undefined") {
@@ -50,6 +50,24 @@ const Homepage = () => {
     token = localStorage.getItem("token");
   }
   console.log(token);
+
+
+
+
+
+
+  let user;
+  if (typeof window !== "undefined") {
+    // Perform localStorage action
+    user = localStorage.getItem("userData");
+  }
+  console.log(user);
+
+
+
+
+
+
 
   let headers = {
     authentication: `Bearer ${token}`,
@@ -67,14 +85,20 @@ const Homepage = () => {
       .catch((err) => console.log(err));
   };
 
+
+
+
   useEffect(() => {
     getData();
   }, []);
 
+
+
+
+
   console.log(data);
-  if( data!==undefined)
-  {
-    console.log(data)
+  if (data !== undefined) {
+    console.log(data);
   }
 
   return (
@@ -82,11 +106,7 @@ const Homepage = () => {
       <Container
         maxW="100%"
         h="100vh"
-        // bgGradient={[
-        //   "linear(to-tr, teal.300, yellow.400)",
-        //   "linear(to-t, blue.200, teal.500)",
-        //   "linear(to-b, orange.100, purple.300)",
-        // ]}
+     
       >
         <Grid m="auto" templateColumns="20% 55% 20%" gap="2.5%">
           <Box
@@ -169,80 +189,76 @@ const Homepage = () => {
             {/* Scroll section */}
 
             <SimpleGrid columns={1}>
-             {
-               data.length>0 && data?.map((item)=>
-              {
-                return(
-                  <Box
-                  w="fit-content"
-                  h="fit-content"
-                  m="auto"
-                  boxShadow="lg"
-                  mt="5"
-                >
-                  <Card maxW="sm">
-                    <CardHeader>
-                      <Flex spacing="4">
-                        <Flex
-                          flex="1"
-                          gap="4"
-                          alignItems="center"
-                          flexWrap="wrap"
-                        >
-                          <Avatar
-                            name="Segun Adebayo"
-                            src="https://bit.ly/sage-adebayo"
-                          />
-  
-                          <Box>
-                            <Heading size="sm">{item.username}</Heading>
-                            <Text>Creator, Chakra UI</Text>
-                          </Box>
-                        </Flex>
-                        <IconButton
-                          variant="ghost"
-                          colorScheme="gray"
-                          aria-label="See menu"
-                        >
-                          <Icon as={BsThreeDotsVertical} />
-                        </IconButton>
-                      </Flex>
-                    </CardHeader>
-                    <CardBody>
-                      <Text>
-                        {item.desc}
-                      </Text>
-                    </CardBody>
-                    <Image
-                      objectFit="cover"
-                      src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                      alt="Chakra UI"
-                    />
-  
-                    <CardFooter
-                      justify="space-between"
-                      flexWrap="wrap"
-                      sx={{
-                        "& > button": {
-                          minW: "136px",
-                        },
-                      }}
+              {data.length > 0 &&
+                data?.map((item) => {
+                  return (
+                    <Box
+                      w="fit-content"
+                      h="fit-content"
+                      m="auto"
+                      boxShadow="lg"
+                      mt="5"
                     >
-                      <Button flex="1" variant="ghost">
-                        <AiOutlineLike /> Like
-                      </Button>
-                      <Button flex="1" variant="ghost">
-                        <BiMessageAlt /> Comment
-                      </Button>
-                      <Button flex="1" variant="ghost">
-                        <FiShare /> Share
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </Box>
-                )
-              })
-             }
+                      <Card maxW="sm">
+                        <CardHeader>
+                          <Flex spacing="4">
+                            <Flex
+                              flex="1"
+                              gap="4"
+                              alignItems="center"
+                              flexWrap="wrap"
+                            >
+                              <Avatar
+                                name="Segun Adebayo"
+                                src={item.image_url}
+                              />
+
+                              <Box>
+                                <Heading size="sm">{item.username}</Heading>
+                                <Text>Creator, Chakra UI</Text>
+                              </Box>
+                            </Flex>
+                            <IconButton
+                              variant="ghost"
+                              colorScheme="gray"
+                              aria-label="See menu"
+                            >
+                              <Icon as={BsThreeDotsVertical} />
+                            </IconButton>
+                          </Flex>
+                        </CardHeader>
+                        <CardBody>
+                          <Text>{item.desc}</Text>
+                        </CardBody>
+                        <Image
+                          objectFit="cover"
+                          src={item.image_url}
+                          alt="Chakra UI"
+                        />
+
+                        <CardFooter
+                          justify="space-between"
+                          flexWrap="wrap"
+                          sx={{
+                            "& > button": {
+                              minW: "136px",
+                            },
+                          }}
+                        >
+                          <Button flex="1" variant="ghost">
+                            <AiOutlineLike /> Like
+                          </Button>
+                          <Button flex="1" variant="ghost">
+                            <BiMessageAlt /> Comment
+                          </Button>
+                          <Button flex="1" variant="ghost">
+                            <FiShare /> Share
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    </Box>
+                  );
+                })}
             </SimpleGrid>
           </Box>
 
@@ -273,10 +289,25 @@ const Homepage = () => {
                     <DrawerOverlay />
                     <DrawerContent>
                       <DrawerCloseButton />
-                      <DrawerHeader>Chat with customer care</DrawerHeader>
+                      <DrawerHeader> end-to-end encrpyted </DrawerHeader>
 
                       <DrawerBody>
-                        <Input placeholder="Type here..." />
+                        <Flex>
+                          <Box
+                            h="70vh"
+                            p={2}
+                            w="50%"
+                            boxShadow='lg'
+                            // border="1px solid black"
+                          ></Box>
+                          <Box
+                            h="70vh"
+                            p={2}
+                            w="50%"
+                            boxShadow='lg'
+                            // border="1px solid black"
+                          ></Box>
+                        </Flex>
                       </DrawerBody>
 
                       <DrawerFooter>
@@ -295,50 +326,33 @@ const Homepage = () => {
                   Suggested for you{" "}
                 </Text>
               </Box>
-              <Box w="80%" m="auto" mt="1rem" p="1">
-                <Flex justifyContent="space-between" alignItems="center">
-                  <Text fontSize="lg">User Name </Text>
-                  <Button size="sm">
-                    {" "}
-                    <Text>+Follow</Text>
-                  </Button>
-                </Flex>
-              </Box>
-              <Box w="80%" m="auto" p="1">
-                <Flex justifyContent="space-between" alignItems="center">
-                  <Text fontSize="lg">User Name </Text>
-                  <Button size="sm">
-                    {" "}
-                    <Text>+Follow</Text>
-                  </Button>
-                </Flex>
-              </Box>
-              <Box w="80%" m="auto" p="1">
-                <Flex justifyContent="space-between" alignItems="center">
-                  <Text fontSize="lg">User Name </Text>
-                  <Button size="sm">
-                    {" "}
-                    <Text>+Follow</Text>
-                  </Button>
-                </Flex>
-              </Box>
-              <Box w="80%" m="auto" p="1">
-                <Flex justifyContent="space-between" alignItems="center">
-                  <Text fontSize="lg">User Name </Text>
-                  <Button size="sm">
-                    {" "}
-                    <Text>+Follow</Text>
-                  </Button>
-                </Flex>
-              </Box>
-              <Box w="80%" m="auto" p="1">
-                <Flex justifyContent="space-between" alignItems="center">
-                  <Text fontSize="lg">User Name </Text>
-                  <Button size="sm">
-                    {" "}
-                    <Text>+Follow</Text>
-                  </Button>
-                </Flex>
+              <Box w="80%" m="auto" h="auto" mt="1rem" p="1">
+                {data.map((item) => {
+                  return (
+                    <Flex
+                      p={2}
+                      justifyContent="space-between"
+                      alignItems="center"
+                    >
+                      <Text fontSize="lg">{item.username}</Text>
+                      <Button
+                        onClick={() =>
+                          toast({
+                            title: "You followed",
+                            description: "You followed successfully",
+                            status: "success",
+                            duration: 9000,
+                            isClosable: true,
+                          })
+                        }
+                        size="sm"
+                      >
+                        {" "}
+                        <Text>+Follow</Text>
+                      </Button>
+                    </Flex>
+                  );
+                })}
               </Box>
             </Box>
           </Box>
