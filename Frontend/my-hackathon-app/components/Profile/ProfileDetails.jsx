@@ -50,7 +50,7 @@ function ProfileDetails() {
 
   const getData = () => {
     axios
-      .get("https://cobalt-blue-bison-hem.cyclic.app/user", { headers })
+      .get("https://cobalt-blue-bison-hem.cyclic.app/user/profile/:user_id", { headers })
 
       // .then(res=>res.json())
       .then((res) => {

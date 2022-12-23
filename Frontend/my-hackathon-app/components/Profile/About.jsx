@@ -52,7 +52,7 @@ function About() {
 
   const getData = () => {
     axios
-      .get("https://cobalt-blue-bison-hem.cyclic.app/user", { headers })
+      .get("https://cobalt-blue-bison-hem.cyclic.app/user/profile/:user_id", { headers })
 
       // .then(res=>res.json())
       .then((res) => {
@@ -72,7 +72,7 @@ function About() {
     console.log(data)
   }
 
-  
+
   return (
     <Box padding="5px 20px">
       <Text fontWeight="500" fontSize="18px">{UserName}</Text>
