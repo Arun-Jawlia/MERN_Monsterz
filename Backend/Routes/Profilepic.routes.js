@@ -28,7 +28,7 @@ imageRoutes.patch("/updateprofile/:postID", upload.single("image"), async(req,re
     
     catch (err) {
         console.log(err)
-        res.send("error")
+        res.send({"Message":"error while performing this task"})
     }
 })
 

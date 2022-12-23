@@ -24,7 +24,7 @@ postImageRoutes.post("/postimage", upload.single("image"), async(req,res) => {
     
     catch (err) {
         console.log(err)
-        res.send("error")
+        res.send({"Message":"Error while posting"})
     }
 })
 
@@ -63,7 +63,7 @@ postImageRoutes.patch("/editpost/:post_id", async(req,res) => {
         const user_id = req.body.user_id
         const payload = await ImageModel.findOne({_id:post_id})
         if(user_id !==payload.user_id){
-            res.send("You are not authorized for this operation")
+            res.send({"Message":"You are not authorized for this operation"})
         }
         else{
             await ImageModel.findByIdAndUpdate({_id:post_id},payload)
@@ -71,9 +71,9 @@ postImageRoutes.patch("/editpost/:post_id", async(req,res) => {
         }
     } 
     
-    catch (error) {
+    catch (err) {
         console.log(err)
-        res.send("eror while pserforming this task")
+        res.send({"Message":"error while pserforming this task"})
     }
 })
 
@@ -84,7 +84,7 @@ postImageRoutes.delete("/delete/:post_id", async(req,res) => {
         const user_id = req.body.user_id
         const payload = await ImageModel.findOne({_id : post_id})
         if(user_id !==payload.user_id){
-            res.send("You are not authorized for this operation")
+            res.send({"Message":"You are not authorized for this operation"})
         }
         else{
             await ImageModel.findByIdAndDelete({_id : post_id})
@@ -92,9 +92,9 @@ postImageRoutes.delete("/delete/:post_id", async(req,res) => {
         }
     } 
     
-    catch (error) {
+    catch (err) {
         console.log(err)
-        res.send("eror while pserforming this task")
+        res.send({"Message":"error while performing this task"})
     }
 })
 
