@@ -1,15 +1,7 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-// import post1 from "../assets/post1.png";
-// import post2 from "../assets/post2.png";
-// import post3 from "../assets/post3.png";
-// import post4 from "../assets/post4.png";
-// import post5 from "../assets/post5.png";
-// import post6 from "../assets/post6.png";
-// import post7 from "../assets/post7.png";
-// import post8 from "../assets/post8.png";
-// import post9 from "../assets/post9.png";
+import { Image } from "@chakra-ui/react";
 
 export const postImages = [
   "https://scontent.fpat3-3.fna.fbcdn.net/v/t1.6435-9/52396196_2225470484373008_2537096667044249600_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=2NkE6PBAU1sAX9vhyuP&_nc_ht=scontent.fpat3-3.fna&oh=00_AfAeZybzkI0du56nPsZYyLeqUpThK2we8yQOyZ8MOI0f9Q&oe=63CBA14B",
@@ -36,10 +28,46 @@ const GridWrapper = styled.div`
 `;
 
 function PostGrid() {
+
+  const [data, setData] = useState([]);
+
+  let token;
+  if (typeof window !== "undefined") {
+    // Perform localStorage action
+    token = localStorage.getItem("token");
+  }
+  console.log(token);
+
+  let headers = {
+    authentication: `Bearer ${token}`,
+  };
+
+  const getData = () => {
+    axios
+      .get("https://cobalt-blue-bison-hem.cyclic.app/user", { headers })
+
+      // .then(res=>res.json())
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log(data);
+  if( data!==undefined)
+  {
+    console.log(data)
+  }
+
   return (
     <GridWrapper>
       {postImages.map((postImage) => (
-        <img src={postImage} alt="" />
+        <Image cursor="pointer" src={postImage} alt="" />
       ))}
     </GridWrapper>
   );

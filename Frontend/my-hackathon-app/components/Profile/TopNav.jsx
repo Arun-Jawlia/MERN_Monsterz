@@ -60,6 +60,43 @@ const MenuNotification = styled.div`
 const UserId = "VivEk_bTu" || [];
 
 function TopNav() {
+
+  const [data, setData] = useState([]);
+
+  let token;
+  if (typeof window !== "undefined") {
+    // Perform localStorage action
+    token = localStorage.getItem("token");
+  }
+  console.log(token);
+
+  let headers = {
+    authentication: `Bearer ${token}`,
+  };
+
+  const getData = () => {
+    axios
+      .get("https://cobalt-blue-bison-hem.cyclic.app/user", { headers })
+
+      // .then(res=>res.json())
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log(data);
+  if( data!==undefined)
+  {
+    console.log(data)
+  }
+
+  
   return (
     <TopNavWrapper>
       <AccountNav>
