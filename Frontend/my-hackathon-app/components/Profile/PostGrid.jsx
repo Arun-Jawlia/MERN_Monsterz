@@ -1,7 +1,8 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { Image } from "@chakra-ui/react";
+import axios from "axios";
 
 export const postImages = [
   "https://scontent.fpat3-3.fna.fbcdn.net/v/t1.6435-9/52396196_2225470484373008_2537096667044249600_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=2NkE6PBAU1sAX9vhyuP&_nc_ht=scontent.fpat3-3.fna&oh=00_AfAeZybzkI0du56nPsZYyLeqUpThK2we8yQOyZ8MOI0f9Q&oe=63CBA14B",
@@ -44,7 +45,7 @@ function PostGrid() {
 
   const getData = () => {
     axios
-      .get("https://cobalt-blue-bison-hem.cyclic.app/user", { headers })
+      .get("https://cobalt-blue-bison-hem.cyclic.app/user/profile/:user_id", { headers })
 
       // .then(res=>res.json())
       .then((res) => {
