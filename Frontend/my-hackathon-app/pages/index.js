@@ -24,8 +24,8 @@ export default function Home() {
       <main>
         <Homepage />
         {/* <Navbar /> */}
-        {/* <SignUp/> */}
-        {/* <Login/> */}
+        <SignUp/>
+        <Login/>
         {/* <Profile/> */}
         {/* <getData/> */}
       </main>
