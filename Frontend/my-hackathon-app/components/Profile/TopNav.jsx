@@ -1,9 +1,10 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { BiChevronDown } from "react-icons/bi";
 import { FiPlusSquare } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
+import axios from "axios";
 
 const TopNavWrapper = styled.div`
   display: flex;

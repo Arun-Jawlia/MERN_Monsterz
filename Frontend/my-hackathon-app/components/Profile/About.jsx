@@ -1,6 +1,7 @@
 
 import { Box, Link, Text } from "@chakra-ui/react";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 // import styles from "@emotion/styled";
 
 // const AboutWrapper = styles.div`
@@ -44,7 +45,7 @@ function About() {
     // Perform localStorage action
     token = localStorage.getItem("token");
   }
-  console.log(token);
+  // console.log(token);
 
   let headers = {
     authentication: `Bearer ${token}`,
@@ -84,14 +85,6 @@ function About() {
       {/* <Text display="block" marginTop="3px">⬇️Join Our Telegram Channel</Text> */}
       {/* <Link href="https://t.me/sparshcodes">t.me/sparshcodes</Link> */}
     </Box>
-    // <AboutWrapper>
-    //   <ProfileName>{UserName}</ProfileName>
-    //   <ProfileCategory>Education</ProfileCategory>
-    //   <BioText>🌐All About FrontEnd Web-Development</BioText>
-    //   <BioText>📒Resources/tips/tricks/tutorials</BioText>
-    //   <BioText>👨‍💻Bug Free code</BioText>
-    //   <BioText>🌱 Let's Grow Together</BioText>
-    // </AboutWrapper>
   );
 }
 
